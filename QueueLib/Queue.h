@@ -109,7 +109,7 @@ TQueue<T>& TQueue<T>::operator=(TQueue<T>& _v)
     return *this;
   this->length = _v.length;
 
-  if (x != nullptr)
+  if (x != NULL)
   {
     delete[] x;
   }

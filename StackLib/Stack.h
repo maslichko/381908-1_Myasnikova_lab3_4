@@ -143,10 +143,11 @@ TStack<T>& TStack<T>::operator=(TStack<T>& _v)
     return *this;
 
   this->length = _v.length;
-  if (x != nullptr)
+  if (x != NULL)
   {
     delete[] x;
   }
+ 
   this->x = new T [length];
   for (int i = 0; i < length; i++)
     x[i] = _v.x[i];
