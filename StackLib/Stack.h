@@ -26,7 +26,7 @@ public:
   inline int max_elem(); //Поиск максимального элемента
   inline void file(); //Запись в файл
 
-  TStack<T>& operator =(TStack<T>& _v);
+  TStack<T>& operator= (TStack<T>& _v);
 
   template <class T1>
   friend ostream& operator<< (ostream& ostr, const TStack<T1> &A);
@@ -137,13 +137,16 @@ inline void TStack<T>::file()
 }
 
 template <class T>
-TStack<T>& TStack<T>::operator =(TStack<T>& _v)
+TStack<T>& TStack<T>::operator=(TStack<T>& _v)
 {
   if (this == &_v)
     return *this;
 
   this->length = _v.length;
-  delete[] x;
+  if (x != nullptr)
+  {
+    delete[] x;
+  }
   this->x = new T [length];
   for (int i = 0; i < length; i++)
     x[i] = _v.x[i];

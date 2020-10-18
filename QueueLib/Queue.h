@@ -18,7 +18,7 @@ public:
   TQueue(TQueue<T>& _v);
   ~TQueue();
 
-  TQueue<T>& operator =(TQueue<T>& _v);
+  TQueue<T>& operator=(TQueue<T>& _v);
 
   void Push(T d); //Вставка элемента
   T Get(); //Получение элемента
@@ -103,13 +103,17 @@ TQueue<T>::~TQueue()
 }
 
 template <class T>
-TQueue<T>& TQueue<T>::operator =(TQueue<T>& _v)
+TQueue<T>& TQueue<T>::operator=(TQueue<T>& _v)
 {
   if (this == &_v)
     return *this;
-
   this->length = _v.length;
-  delete[] x;
+
+  if (x != nullptr)
+  {
+    delete[] x;
+  }
+
   this->x = new T[length];
   for (int i = 0; i < length; i++)
     x[i] = _v.x[i];
